@@ -2,8 +2,38 @@
 {% load static %}
 {% block body %}
         <p></p>
-        <div style="font-size: 50px; text-align: center; font-family: Consolas">Hall of <span style="color: chartreuse;">Fame</span></div>
-        <p style="text-align: center; background-color: white;">PHYSICISTS</p>
+        <p></p>
+        <p></p>
+        <div style="font-size: 55px; text-align: center; font-family: Consolas; margin-bottom: 20px; margin-top: 80px;">Welcome to 'Know <span style="color: chartreuse;">It</span>'</div>
+        <p style="background-color: black; color: white; font-family:monospace; text-align: center; margin-bottom: 25px;">Where curiosity meets Knowledge</p>
+        <div style="display: inline-flex;">
+            <div class="card text-center mb-3" style="width: 18rem; color: black; background-color: gray; height: 500px; margin-left: 160px;">
+                <div class="card-body">
+                <h5 class="card-title" style="text-align: center; margin-top: 130px;">Know about <span style="color: chartreuse;">physicists</span></h5>
+                <p class="card-text" style="font-style: italic; margin-top: 20px;">"I think physicists are the Peter Pans of the human race. They never grow up and they keep their curiosity"</p>  
+                <p class="card-text" style="font-style: italic;">-Isidor Isaac Rabi</p>
+                <button style="background-color: white; outline-style: ridge; border-radius: 10px;"><a style="color: black; text-decoration: none;" href="#fun">Explore</a></button>          
+                </div>
+            </div>
+            <div class="card text-center mb-3" style="width: 18rem; color: black; background-color: gray; height: 500px; margin-left: 160px;">
+                <div class="card-body">
+                <h5 class="card-title" style="text-align: center; margin-top: 130px;">Know about <span style="color: chartreuse;">science</span></h5>
+                <p class="card-text" style="font-style: italic; margin-top: 20px;">"Science is a beautiful gift to humanity; we should not distort it."</p>  
+                <p class="card-text" style="font-style: italic;">- A.P.J.Abdul Kalam</p>
+                <button style="background-color: white; outline-style: ridge; border-radius: 10px;"><a style="color: black; text-decoration: none;" href="#fun">Explore</a></button>          
+                </div>
+            </div>
+            <div class="card text-center mb-3" style="width: 18rem; color: black; background-color: gray; height: 500px; margin-left: 160px;">
+                <div class="card-body">
+                <h5 class="card-title" style="text-align: center; margin-top: 130px;">Know about <span style="color: chartreuse;">inventions</span></h5>
+                <p class="card-text" style="font-style: italic; margin-top: 20px;">"The day science begins to study non-physical phenomena, it will make more progress in one decade than in all the previous centuries of its existence."</p>  
+                <p class="card-text" style="font-style: italic;">-Nikola Tesla</p>
+                <button style="background-color: white; outline-style: ridge; border-radius: 10px;"><a style="color: black; text-decoration: none;" href="#fun">Explore</a></button>          
+                </div>
+            </div>
+        </div>
+
+        <p style="text-align: center; background-color: black; color: white;">PHYSICISTS</p>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
               <div class="card">
@@ -11,7 +41,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Nikola Tesla</h5>
                   <p class="card-text">Nikola Tesla was a Serbian-American inventor, electrical engineer, mechanical engineer, and futurist. He is known for his contributions to the design of the ...</p>
-                  <button style="color: gray;"><a href="#fun">Know More</a></button>
+                  <button type="button" class="btn btn-outline-dark" href="#fun">Dark</button>
                 </div>
               </div>
             </div>
@@ -57,43 +87,60 @@
             </div>
           </div>
         <p></p>
+       
+
+
         <p style="text-align: center; background-color: white;" id="fun">PHYSICISTS</p>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <div class="col">
               <div class="card">
-                <img src="{% static 'KnowIt/tesla.jpg' %}" class="card-img-top" alt="image">
+                <img src="{% static 'KnowIt/tesla.jpg' %}" class="card-img-top" alt="image" style="height: 580px;">
                 <div class="card-body">
                   <h5 class="card-title">Nikola Tesla</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">Nikola Tesla was a Serbian-American inventor, electrical engineer, mechanical engineer, and futurist. He is known for his contributions to the design of the ...</p>
+                  <button type="button" class="btn btn-outline-dark" href="#fun">Dark</button>
                 </div>
               </div>
             </div>
             <div class="col">
               <div class="card">
-                <img src="{% static 'KnowIt/stephen_hawking.jpg' %}" class="card-img-top" alt="...">
+                <img src="{% static 'KnowIt/stephen_hawking.jpg' %}" class="card-img-top" alt="..." style="height: 580px;">
                 <div class="card-body">
                   <h5 class="card-title">Stephen Hawking</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">Stephen William Hawking, CH, CBE, FRS, FRSA (8 January 1942 – 14 March 2018) was an English theoretical physicist, cosmologist, and author who was director ...</p>
+                  <button style="color: gray;">Know More</button>
                 </div>
               </div>
             </div>
             <div class="col">
               <div class="card">
-                <img src="{% static 'KnowIt/einstein.jpg' %}" class="card-img-top" alt="...">
+                <img src="{% static 'KnowIt/einstein.jpg' %}" class="card-img-top" alt="..." style="height: 580px;">
                 <div class="card-body">
                   <h5 class="card-title">Albert Einstein</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                  <p class="card-text">Albert Einstein was a famous physicist. His research spanned from quantum mechanics to theories about gravity and motion. After publishing some groundbreaking ...</p>
+                  <button style="color: gray;">Know More</button>
                 </div>
               </div>
             </div>
             <div class="col">
               <div class="card">
-                <img src="{% static 'KnowIt/fynman.jpg' %}" class="card-img-top" alt="...">
+                <img src="{% static 'KnowIt/fynman.jpg' %}" class="card-img-top" alt="..." style="height: 580px;">
                 <div class="card-body">
                   <h5 class="card-title">Richard fynman</h5>
-                  <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <p class="card-text">Richard Phillips Feynman was an American theoretical physicist, known for his work in the path integral formulation of quantum mechanics, the theory of ...</p>
+                  <button style="color: gray;">Know More</button>
                 </div>
               </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                  <img src="{% static 'KnowIt/Erwin_Schrödinger.jpg' %}" class="card-img-top" alt="..." style="height: 580px;">
+                  <div class="card-body">
+                    <h5 class="card-title">Erwin_Schrödinger</h5>
+                    <p class="card-text">Erwin Rudolf Josef Alexander Schrödinger sometimes written as Schroedinger or Schrodinger, was a Nobel Prize–winning Austrian and naturalized Irish ...</p>
+                    <button style="color: gray;">Know More</button>
+                  </div>
+                </div>
             </div>
           </div>
 {% endblock %}
