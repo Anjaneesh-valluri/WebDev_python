@@ -1,8 +1,11 @@
 {% extends "KnowIt/layout.html" %}
 {% block body %}
 
+
 <p style="margin-top: 50px; text-align: center; font-size: 50px;">Write to <span style="color: chartreuse;">Us</span></p>
-<form class="row row-cols-lg-auto g-3 align-items-center" action="display">
+<form class="row row-cols-lg-auto g-3 align-items-center" action="display" method="post">
+
+    {% csrf_token %}
     <div class="col-12">
       <label class="visually-hidden" for="inlineFormInputGroupUsername">Username</label>
       <div class="input-group">
@@ -34,5 +37,4 @@
     </div>
 </form>
 
-{{ form }}
 {% endblock %}

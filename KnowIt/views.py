@@ -8,15 +8,10 @@ def index(request):
 def physicists(request):
     return render(request,"KnowIt/physicists.html")
 def form(request):
-    if request.method=="Post":
-        form1= request.post
-        return render(request,"KnowIt/display.html",{"form":form1})
     return render(request,"KnowIt/form.html")
 
 def display(request):
-    email = request.GET['inlineFormInputGroupUsername']
+    email = request.POST['inlineFormInputGroupUsername']
     #value = request.GET['inlineFormCheck']
     form = [email]
-
-
     return render(request,"KnowIt/display.html",{"form": form})
