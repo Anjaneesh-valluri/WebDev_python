@@ -4,7 +4,18 @@
 {% load static %}
 {% block body %}
 
-<h1>ID: {{ container.id }}<br>Name: {{container.name}}<br>Description: {{container.desc}}<br>Price: {{container.price}}</h1>
+<div style="font-size: 55px; text-align: center; font-family: Consolas; margin-bottom: 50px; margin-top: 80px;  background-color:rgb(228, 228, 228)">Welcome to 'Buy <span style="color:aqua;">It</span>'</div>
+{% for Product in Products %}
+    <div class="card" style="width: 18rem; display:inline-flex; margin-left:5%; margin-bottom: 5%">
+        <img src="{{Product.img.url}}" class="card-img-top" alt="{{Product.name}}" style="height:300px;">
+        <div class="card-body">
+        <h5 class="card-title">{{Product.name}}</h5>
+        <p class="card-text">{{Product.desc}}</p>
+        <p class="card-text">₹ {{Product.price}}</p>
+        <a href="#" class="btn btn-primary">Add to cart</a>
+        </div>
+    </div>
+{% endfor %}
 
 
 {% endblock %}

@@ -30,7 +30,7 @@
                 <div class="mb-3">
                   <input type="password" class="form-control" name="password" style="width: 25%; margin-left:38%; margin-top: 2%" placeholder="Password">
                 </div>
-                <p>Don't have an account? It's ok, <a href="" style="text-decoration: none;">create one</a>.</p>
+                <p>Don't have an account? It's ok, <a href="{% url 'members:register_user' %}" style="text-decoration: none;">create one</a>.</p>
                 <button type="submit" class="btn btn-primary">Submit</button>
              </div>
           </form>

@@ -1,15 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from . import models
+from .models import Product
+ 
 
 # Create your views here.
 
 def index(request):
-    container1 = models.container()
-    container1.id=1
-    container1.name= "Mobile"
-    container1.desc= "Electronic device"
-    container1.price = 50000
+    Product1= Product.objects.all()
+    return render(request, "BuyIt/index.html",{'Products' : Product1})
 
-
-    return render(request, "BuyIt/index.html",{'container': container1})
+def cart(request):
+    return render(request,"BuyIt/cart.html",{})
