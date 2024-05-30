@@ -4,15 +4,19 @@
 {% load static %}
 {% block body %}
 
-<div style="font-size: 55px; text-align: center; font-family: Consolas; margin-bottom: 50px; margin-top: 80px;  background-color:rgb(228, 228, 228)">Welcome to 'Buy <span style="color:aqua;">It</span>'</div>
+<div class="display-1" style="font-size: 55px; text-align: center; font-family: Consolas; margin-bottom: 20px; margin-top: 40px;  background-color:rgb(228, 228, 228)">Welcome to 'Buy <span style="color:aqua;">It</span>'</div>
+<h6 style="background-color: rgb(228, 228, 228); text-align: center; margin-bottom: 50px;">Products at their cheapest</h6>
 {% for Product in Products %}
     <div class="card" style="width: 18rem; display:inline-flex; margin-left:5%; margin-bottom: 5%">
         <img src="{{Product.img.url}}" class="card-img-top" alt="{{Product.name}}" style="height:300px;">
         <div class="card-body">
         <h5 class="card-title">{{Product.name}}</h5>
-        <p class="card-text">{{Product.desc}}</p>
+        <p class="card-text">{{Product.tag}}</p>
         <p class="card-text">₹ {{Product.price}}</p>
-        <a href="#" class="btn btn-primary">Add to cart</a>
+        <div style="display: inline;">
+            <a href="" class="btn btn-primary">Add to cart</a>
+            <a href="{% url 'BuyIt:item' Product.id %}" class="btn btn-primary" style="margin-left: 8%;">View item</a>
+        </div>
         </div>
     </div>
 {% endfor %}

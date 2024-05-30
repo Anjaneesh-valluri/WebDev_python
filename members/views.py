@@ -28,14 +28,20 @@ def register_user(request):
         email = request.POST["email"]
         password =request.POST["password"]
         password1 = request.POST["re-password"]
-        if password==password1:
+        if User.objects.filter(username=username).exists():
+           messages.info(request,"Username is already taken, please try with other username")
+           return redirect("members:register_user")
+        elif User.objects.filter(email=email).exists():
+           messages.info(request,"Sorry! Email already exists, try giving another one")
+           return redirect("members:register_user")
+        elif password==password1:
             user = User.objects.create_user(username=username,password=password1,email=email,first_name=first_name,last_name=last_name)
             user.save()
-            messages.success(request,("Account created successfully.... Please log in..."))
+            messages.info(request,"Congrats!! User created successfully")
             return redirect("members:register_user")
         else:
-           messages.success(request,("Entered password does'nt match the above one"))
-           return render(request,"members/register_user.html",{})
+           messages.info(request,"Passwords dosent match, please re-enter")
+           return redirect("members:register_user")
     else:
        return render(request, "members/register_user.html",{})
 

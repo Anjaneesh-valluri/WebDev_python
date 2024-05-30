@@ -6,5 +6,5 @@ app_name="BuyIt"
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("cart/",views.cart,name="cart")
+    path("item/<int:it>", views.item,name="item")
 ]

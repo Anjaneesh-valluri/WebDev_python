@@ -1,0 +1,11 @@
+{% extends 'BuyIt/layout.html' %}
+{%block body%}
+
+  <img src="{{items.img.url}}" alt="na" style="margin-left:33%; height:500px;">
+  <h1 style="margin-top: 40px; text-align:center;">{{items.name}}</h1>
+  <h6 style="margin-top: 10px; text-align:center;">{{items.tag}}</h1>
+  <div style="width: 80%;">
+    <p style="margin-left: 20%;">{{items.desc}}</p>
+  </div>
+
+{%endblock%}
