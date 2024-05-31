@@ -4,6 +4,7 @@ from .models import Product
  
 
 # Create your views here.
+app_name='BuyIt'
 
 def index(request):
     Product1= Product.objects.all()

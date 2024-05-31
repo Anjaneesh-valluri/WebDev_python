@@ -7,6 +7,7 @@
 <div class="display-1" style="font-size: 55px; text-align: center; font-family: Consolas; margin-bottom: 20px; margin-top: 40px;  background-color:rgb(228, 228, 228)">Welcome to 'Buy <span style="color:aqua;">It</span>'</div>
 <h6 style="background-color: rgb(228, 228, 228); text-align: center; margin-bottom: 50px;">Products at their cheapest</h6>
 {% for Product in Products %}
+    
     <div class="card" style="width: 18rem; display:inline-flex; margin-left:5%; margin-bottom: 5%">
         <img src="{{Product.img.url}}" class="card-img-top" alt="{{Product.name}}" style="height:300px;">
         <div class="card-body">
@@ -14,12 +15,42 @@
         <p class="card-text">{{Product.tag}}</p>
         <p class="card-text">₹ {{Product.price}}</p>
         <div style="display: inline;">
-            <a href="" class="btn btn-primary">Add to cart</a>
-            <a href="{% url 'BuyIt:item' Product.id %}" class="btn btn-primary" style="margin-left: 8%;">View item</a>
+            <button id="add-cart" type="button" value="{{ Product.id }}" class="btn btn-primary">Add to cart</button>
+            <a href="{% url 'BuyIt:item' Product.id %}" class="btn btn-secondary" style="margin-left: 8%;">View item</a>
         </div>
         </div>
     </div>
+    
 {% endfor %}
+<script>
+$(document).ready(function(){
+     $('.btn btn-primary').click(function(){
+        var button_value = $(this).val();
+    //e.preventDefault();
+        $.ajax({
+            type:"POST",
+            url: "{% url 'cart_add' %}",
+            data:{
+                product_id: button_value,
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+                action: 'post'
 
+            },
+
+            success: function(json){
+                console.log(json)
+                console.log($('#add-cart').val())
+            },
+
+            error: function(xhr, errmsg, err){
+                console.log($('#add-cart').val())
+            }
+
+        });
+});
+});
+
+
+</script>
 
 {% endblock %}
