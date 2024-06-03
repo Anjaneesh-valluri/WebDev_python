@@ -1,3 +1,5 @@
+from BuyIt.models import Product
+
 class Cart():
     def __init__(self,request):
         self.session=request.session
@@ -19,3 +21,11 @@ class Cart():
             self.cart[product_id] = {'price': str(product.price)}
 
         self.session.modified = True
+    def __len__(self):
+        return len(self.cart)
+    
+    def get_prod(self):
+        product_ids = self.cart.keys()
+        products = Product.objects.filter(id__in = product_ids)
+        print(11)
+        return products

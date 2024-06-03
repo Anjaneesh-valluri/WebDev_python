@@ -8,7 +8,9 @@ app_name='cart'
 
 
 def cart_summary(request):
-    return render(request,"cart/cart_summary.html",{})
+    cart = Cart(request)
+    products= cart.get_prod
+    return render(request,"cart/cart_summary.html",{"products": products})
 
 def cart_update(request):
     return render(request,"cart/cart_summary.html",{})
@@ -20,7 +22,8 @@ def cart_add(request):
         product = get_object_or_404(Product, id= product_id)
         print(product)
         cart.add(product=product)
-        response = JsonResponse({ 'Product Name: ':product.name})
+        cart_quantity = cart.__len__()
+        response = JsonResponse({ 'Qty':cart_quantity})
         return response
 
 def cart_delete(request):

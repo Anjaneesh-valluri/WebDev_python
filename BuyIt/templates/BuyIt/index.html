@@ -15,42 +15,39 @@
         <p class="card-text">{{Product.tag}}</p>
         <p class="card-text">₹ {{Product.price}}</p>
         <div style="display: inline;">
-            <button id="add-cart" type="button" value="{{ Product.id }}" class="btn btn-primary">Add to cart</button>
-            <a href="{% url 'BuyIt:item' Product.id %}" class="btn btn-secondary" style="margin-left: 8%;">View item</a>
+            <button id="add-cart" type="button" value="{{ Product.id }}" class="btn btn-primary update-cart">Add to cart</button>
+            <a href="{% url 'BuyIt:item' Product.id %}" class="btn btn-primary" style="margin-left: 8%;">View item</a>
         </div>
         </div>
     </div>
     
 {% endfor %}
 <script>
-$(document).ready(function(){
-     $('.btn btn-primary').click(function(){
-        var button_value = $(this).val();
-    //e.preventDefault();
+    $(document).on('click', '.update-cart', function(e){
+        let product_id = e.target.value
         $.ajax({
             type:"POST",
             url: "{% url 'cart_add' %}",
             data:{
-                product_id: button_value,
+                product_id: product_id,
                 csrfmiddlewaretoken: '{{ csrf_token }}',
                 action: 'post'
-
-            },
-
+    
+            },   
             success: function(json){
                 console.log(json)
-                console.log($('#add-cart').val())
+                document.getElementById("cart_quantity").textContent = json.Qty
+                console.log(json.Qty)
             },
-
+    
             error: function(xhr, errmsg, err){
-                console.log($('#add-cart').val())
+                console.log(product_id)
             }
-
+    
         });
-});
-});
-
-
+    })
+    
+    
 </script>
 
 {% endblock %}

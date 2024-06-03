@@ -7,5 +7,33 @@
   <div style="width: 80%;">
     <p style="margin-left: 20%;">{{items.desc}}</p>
   </div>
+  <button id="add-cart" type="button" value="{{ items.id }}" class="btn btn-secondary update-cart" style="align-items: center;">Add to cart</button>
+<script>
+        $(document).on('click', '#add-cart', function(e){
+            e.preventDefault();
+            $.ajax({
+                type:"POST",
+                url: "{% url 'cart_add' %}",
+                data:{
+                    product_id: $('#add-cart').val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    action: 'post'
+        
+                },
+        
+                success: function(json){
+                    console.log(json)
+                    console.log($('#add-cart').val())
+                },
+        
+                error: function(xhr, errmsg, err){
+                    console.log($('.update-cart').val())
+                }
+        
+            });
+        })
+        
+        
+</script>
 
 {%endblock%}

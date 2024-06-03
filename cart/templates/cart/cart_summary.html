@@ -1,1 +1,38 @@
-Hellooo
+{% extends  "BuyIt/layout.html" %}
+
+
+{% load static %}
+{% block body %}
+
+<div>
+    <p style="text-align:center; font-size: 50px; background-color:rgb(228, 228, 228);">My <span style="color: darkcyan;">cart</span></p>
+    {%if products %}
+        {%for product in products%}
+            <div class="card mb-3" style="width: 40%; height:20%; margin-left:30%; margin-top:3%;">
+                <div style="margin-top: 4%;">
+                    <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{product.img.url}}" class="img-fluid rounded-start" alt="{{product.img.url}}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                        <h5 class="card-title">{{product.name}}</h5>
+                        <p class="card-text">{{product.tag}}</p>
+                        <p class="card-text"><small class="text-body-secondary">added recently</small></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <a href="{% url 'BuyIt:item' product.id %}" class="btn btn-primary" style="margin-left: 50%; width:20%; margin-bottom:5%">View item</a>
+            </div>
+        {%endfor%}
+    {% else %}
+      <div style=" text-align:center">
+        <img src="{% static 'BuyIt/empty_cart.png' %}" alt="Cart is empty">
+        <h4>Your cart is empty</h6>
+        <p style="font-weight: lighter;">Add items to view here</p>
+      </div>
+    {% endif %}
+</div>
+
+{%endblock%}
