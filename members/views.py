@@ -12,7 +12,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("KnowIt:index")
+            return redirect("members:mugen")
         else:
            messages.success(request,("Please enter right username/password and try again!!"))
            return redirect("members:login_user")
@@ -49,3 +49,7 @@ def logout_user(request):
    messages.success(request,("Successfully logged out!!"))
    logout(request)
    return redirect("members:login_user")
+
+def mugen(request):
+   messages.success(request,("You are successfully logged in!!"))
+   return render(request, "members/mugen.html",{})

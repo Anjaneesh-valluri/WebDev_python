@@ -13,10 +13,14 @@
         <div class="card-body">
         <h5 class="card-title">{{Product.name}}</h5>
         <p class="card-text">{{Product.tag}}</p>
-        <p class="card-text">₹ {{Product.price}}</p>
+        {% if Product.offer %}
+              <p class="card-text">₹ {{Product.price}} <span class="badge rounded-pill text-bg-warning">Sale</span></p>
+        {%else%}
+             <p class="card-text">₹ {{Product.price}}</p>
+        {%endif%}
         <div style="display: inline;">
-            <button id="add-cart" type="button" value="{{ Product.id }}" class="btn btn-primary update-cart">Add to cart</button>
-            <a href="{% url 'BuyIt:item' Product.id %}" class="btn btn-primary" style="margin-left: 8%;">View item</a>
+            <button id="add-cart" type="button" value="{{ Product.id }}" class="btn btn-outline-primary update-cart" style="margin-left: 3%;">Add to cart</button>
+            <a href="{% url 'BuyIt:item' Product.id %}" class="btn btn-outline-info" style="margin-left: 8%;">View item</a>
         </div>
         </div>
     </div>
