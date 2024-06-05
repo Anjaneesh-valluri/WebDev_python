@@ -30,13 +30,29 @@
                     <a class="nav-link" href="{% url 'members:logout_user' %}">Logout</a>
                   </li>
                 </ul>
-                <a href="{% url 'cart_summary' %}" class="btn btn-outline-success" style="color: black;" tabindex="-1" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag inline-block align-middle" viewBox="0 0 16 16">
+                <!-- <a href="{% url 'cart_summary' %}" class="btn btn-outline-success" style="color: black;" tabindex="-1" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag inline-block align-middle" viewBox="0 0 16 16">
                   <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
                 </svg> <span style="font-weight: lighter;" class="inline-block align-bottom">   My Cart</span><span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity"> {{ cart|length }}</span></a>
+              --><a href="{% url 'cart_summary' %}" type="button" class="btn btn-outline-success position-relative" style="width: 130px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag inline-block align-middle" viewBox="0 0 16 16">
+                  <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                  </svg><span style="margin-left:5px">My cart</span>
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                     {{ cart|length }}
+                    <span class="visually-hidden">my cart</span>
+                  </span>
+                </a>
               </div>
             </div>
           </nav>
         </div>
+        {% if messages %}
+          {%for message in messages%}
+            <div class="alert alert-success" role="alert">
+              {{message}}
+            </div>
+          {%endfor%}
+        {%endif%}
         {% block body %}
         {%endblock%}
         <div id="footer" style="color: black; width: 100%; background-color: rgb(182, 174, 174); height: 100px; text-align: center; bottom: 0;">

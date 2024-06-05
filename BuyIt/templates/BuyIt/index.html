@@ -6,6 +6,7 @@
 
 <div class="display-1" style="font-size: 55px; text-align: center; font-family: Consolas; margin-bottom: 20px; margin-top: 40px;  background-color:rgb(228, 228, 228)">Welcome to 'Buy <span style="color:aqua;">It</span>'</div>
 <h6 style="background-color: rgb(228, 228, 228); text-align: center; margin-bottom: 50px;">Products at their cheapest</h6>
+
 {% for Product in Products %}
     
     <div class="card" style="width: 18rem; display:inline-flex; margin-left:5%; margin-bottom: 5%">
@@ -42,6 +43,7 @@
                 console.log(json)
                 document.getElementById("cart_quantity").textContent = json.Qty
                 console.log(json.Qty)
+                location.reload()
             },
     
             error: function(xhr, errmsg, err){

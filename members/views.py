@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
+import copy
+from cart.cart import Cart
+from django_prac import settings
 
 # Create your views here.
 
@@ -46,6 +49,10 @@ def register_user(request):
        return render(request, "members/register_user.html",{})
 
 def logout_user(request):
+   cart = copy.deepcopy(Cart(request).cart)
+   session = request.session
+   print(session.get('session_key'))
+   session.modified = True
    messages.success(request,("Successfully logged out!!"))
    logout(request)
    return redirect("members:login_user")
@@ -53,3 +60,7 @@ def logout_user(request):
 def mugen(request):
    messages.success(request,("You are successfully logged in!!"))
    return render(request, "members/mugen.html",{})
+
+def update_user(request):
+   
+   return(request, "members/update_user.html",{})

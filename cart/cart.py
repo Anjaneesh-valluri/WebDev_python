@@ -38,12 +38,9 @@ class Cart():
     def cart_total(self):
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)
-		# Get quantities
         quantities = self.cart
-		# Start counting at 0
         total = 0
         for key, value in quantities.items():
-			# Convert key string into into so we can do math
             key = int(key)
             for product in products:
                 if product.id == key:

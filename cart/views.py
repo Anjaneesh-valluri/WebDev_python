@@ -2,6 +2,8 @@ from django.shortcuts import render,get_object_or_404, render
 from .cart import Cart
 from BuyIt.models import Product
 from django.http import JsonResponse
+from django.contrib import messages
+
 
 # Create your views here.
 app_name='cart'
@@ -26,6 +28,7 @@ def cart_add(request):
         cart_quantity = cart.__len__()
         cart_total = cart.cart_total()
         response = JsonResponse({ 'Qty':cart_quantity , 'cart_total':cart_total})
+        messages.success(request,("Yay!! Item added to cart Succesfully..!"))
         return response
 
 def cart_delete(request):
@@ -34,5 +37,6 @@ def cart_delete(request):
         product_id = int(request.POST.get('product_id'))
         cart.delete(product = product_id)
         response = JsonResponse({'deleted':product_id})
+        messages.success(request,("Item deleted from cart succesfully"))
         return response
 
