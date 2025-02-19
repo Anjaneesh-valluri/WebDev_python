@@ -1,0 +1,36 @@
+{%extends 'BuyIt/layout.html'%}
+
+{%load static%}
+{%block body %}
+
+<div style="justify-items: center; margin-bottom: 200px;">
+    <h1>Hey, <span style="color: aqua;">{{user.username}}</span></h1>
+    <hr class="hr hr-blurry" />
+    <h3 style="font-weight: 300;">.Thank you for being such an awsome support for us.</h3>
+    <h3 style="margin-top: 30px;">Here are your details:</h3>
+    <hr class="hr hr-blurry" />
+    <table style="border: none;">
+        <tr>
+            <td>User-name :</td>
+            <td>{{user.username}}</td>
+        </tr>
+        <tr>
+            <td>First-name :</td>
+            <td>{{user.first_name}}</td>
+        </tr>
+        <tr>
+            <td>Last-name :</td>
+            <td>{{user.last_name}}</td>
+        </tr>
+        <tr>
+            <td>E-mail :</td>
+            <td>{{user.email}}</td>
+        </tr>
+        <tr>
+            <td>last-login :</td>
+            <td>{{user.last_login}}</td>
+        </tr>
+    </table>
+</div>
+
+{%endblock%}

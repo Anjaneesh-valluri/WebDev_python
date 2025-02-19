@@ -41,9 +41,10 @@
             },   
             success: function(json){
                 console.log(json)
+                location.reload();
                 document.getElementById("cart_quantity").textContent = json.Qty
                 console.log(json.Qty)
-                location.reload()
+                location.reload();
             },
     
             error: function(xhr, errmsg, err){
