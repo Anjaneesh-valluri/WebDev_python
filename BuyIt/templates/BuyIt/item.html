@@ -7,7 +7,7 @@
   <div style="width: 80%;">
     <p style="margin-left: 20%;">{{items.desc}}</p>
   </div>
-  <button id="add-cart" type="button" value="{{ items.id }}" class="btn btn-secondary update-cart" style="align-items: center;">Add to cart</button>
+  <button id="add-cart" type="button" value="{{ items.id }}" class="btn btn-secondary update-cart" style="margin-left: 46%; margin-bottom: 5px;">Add to cart</button>
 <script>
         $(document).on('click', '#add-cart', function(e){
             e.preventDefault();
@@ -24,6 +24,7 @@
                 success: function(json){
                     console.log(json)
                     console.log($('#add-cart').val())
+                    location.reload();
                 },
         
                 error: function(xhr, errmsg, err){

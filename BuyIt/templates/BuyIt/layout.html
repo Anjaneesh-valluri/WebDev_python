@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Buy <span style="color: darkcyan;">It</span></title>
+        <title>BuyIT</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -21,7 +21,7 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'BuyIt:index' %}">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="{% url 'BuyIt:about' %}">About Us</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Write to Us</a>
@@ -33,7 +33,9 @@
                 <!-- <a href="{% url 'cart_summary' %}" class="btn btn-outline-success" style="color: black;" tabindex="-1" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag inline-block align-middle" viewBox="0 0 16 16">
                   <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
                 </svg> <span style="font-weight: lighter;" class="inline-block align-bottom">   My Cart</span><span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_quantity"> {{ cart|length }}</span></a>
-              --><a href="{% url 'cart_summary' %}" type="button" class="btn btn-outline-success position-relative" style="width: 130px;">
+              -->
+                  <a href="{% url 'BuyIt:profile'%}" style="color: black; text-decoration: none; margin-right: 10px; border-style:solid; border-radius: 35px; padding: 5px; border-color: aqua;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width: 20px;"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M304 128a80 80 0 1 0 -160 0 80 80 0 1 0 160 0zM96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM49.3 464l349.5 0c-8.9-63.3-63.3-112-129-112l-91.4 0c-65.7 0-120.1 48.7-129 112zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3z"/></svg>Profile</a>
+                  <a href="{% url 'cart_summary' %}" type="button" class="btn btn-outline-success position-relative" style="width: 130px;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag inline-block align-middle" viewBox="0 0 16 16">
                   <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
                   </svg><span style="margin-left:5px">My cart</span>
