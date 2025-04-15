@@ -1,60 +1,97 @@
-{% extends  "BuyIt/layout.html" %}
+{% extends "BuyIt/layout.html" %} {% load static %} {% block body %}
 
+<div
+  class="display-1"
+  style="
+    font-size: 55px;
+    text-align: center;
+    font-family: Consolas;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    background-color: rgb(228, 228, 228);
+  "
+>
+  Welcome to 'Buy <span style="color: aqua">It</span>'
+</div>
+<h6
+  style="
+    background-color: rgb(228, 228, 228);
+    text-align: center;
+    margin-bottom: 50px;
+  "
+>
+  Products at their cheapest
+</h6>
 
-{% load static %}
-{% block body %}
-
-<div class="display-1" style="font-size: 55px; text-align: center; font-family: Consolas; margin-bottom: 20px; margin-top: 40px;  background-color:rgb(228, 228, 228)">Welcome to 'Buy <span style="color:aqua;">It</span>'</div>
-<h6 style="background-color: rgb(228, 228, 228); text-align: center; margin-bottom: 50px;">Products at their cheapest</h6>
-
+<div id="data_container"></div>
 {% for Product in Products %}
-    
-    <div class="card" style="width: 18rem; display:inline-flex; margin-left:5%; margin-bottom: 5%">
-        <img src="{{Product.img.url}}" class="card-img-top" alt="{{Product.name}}" style="height:300px;">
-        <div class="card-body">
-        <h5 class="card-title">{{Product.name}}</h5>
-        <p class="card-text">{{Product.tag}}</p>
-        {% if Product.offer %}
-              <p class="card-text">₹ {{Product.price}} <span class="badge rounded-pill text-bg-warning">Sale</span></p>
-        {%else%}
-             <p class="card-text">₹ {{Product.price}}</p>
-        {%endif%}
-        <div style="display: inline;">
-            <button id="add-cart" type="button" value="{{ Product.id }}" class="btn btn-outline-primary update-cart" style="margin-left: 3%;">Add to cart</button>
-            <a href="{% url 'BuyIt:item' Product.id %}" class="btn btn-outline-info" style="margin-left: 8%;">View item</a>
-        </div>
-        </div>
+
+<div
+  class="card"
+  style="width: 18rem; display: inline-flex; margin-left: 5%; margin-bottom: 5%"
+>
+  <img
+    src="{{Product.img.url}}"
+    class="card-img-top"
+    alt="{{Product.name}}"
+    style="height: 300px"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{Product.name}}</h5>
+    <p class="card-text">{{Product.tag}}</p>
+    {% if Product.offer %}
+    <p class="card-text">
+      ₹ {{Product.price}}
+      <span class="badge rounded-pill text-bg-warning">Sale</span>
+    </p>
+    {%else%}
+    <p class="card-text">₹ {{Product.price}}</p>
+    {%endif%}
+    <div style="display: inline">
+      <button
+        id="add-cart"
+        type="button"
+        value="{{ Product.id }}"
+        class="btn btn-outline-primary update-cart"
+        style="margin-left: 3%"
+      >
+        Add to cart
+      </button>
+      <a
+        href="{% url 'BuyIt:item' Product.id %}"
+        class="btn btn-outline-info"
+        style="margin-left: 8%"
+        >View item</a
+      >
     </div>
-    
+  </div>
+</div>
+
 {% endfor %}
 <script>
-    $(document).on('click', '.update-cart', function(e){
-        let product_id = e.target.value
-        $.ajax({
-            type:"POST",
-            url: "{% url 'cart_add' %}",
-            data:{
-                product_id: product_id,
-                csrfmiddlewaretoken: '{{ csrf_token }}',
-                action: 'post'
-    
-            },   
-            success: function(json){
-                console.log(json)
-                location.reload();
-                document.getElementById("cart_quantity").textContent = json.Qty
-                console.log(json.Qty)
-                location.reload();
-            },
-    
-            error: function(xhr, errmsg, err){
-                console.log(product_id)
-            }
-    
-        });
-    })
-    
-    
+  $(document).on("click", ".update-cart", function (e) {
+    let product_id = e.target.value;
+    $.ajax({
+      type: "POST",
+      url: "{% url 'cart_add' %}",
+      data: {
+        product_id: product_id,
+        csrfmiddlewaretoken: "{{ csrf_token }}",
+        action: "post",
+      },
+      success: function (json) {
+        console.log(json);
+        location.reload();
+        document.getElementById("cart_quantity").textContent = json.Qty;
+        console.log(json.Qty);
+        location.reload();
+      },
+
+      error: function (xhr, errmsg, err) {
+        console.log(product_id);
+      },
+    });
+  });
 </script>
 
 {% endblock %}

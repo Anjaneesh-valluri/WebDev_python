@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import Product
 from django.contrib.auth.models import User
+from django.contrib import messages
+from rest_framework import generics
+from .serializer import ProductModelSerializer
+
  
 
 # Create your views here.
@@ -28,4 +32,29 @@ def profile(request):
             'date_joined': user.date_joined,
             'last_login' : user.last_login
         }
+    if request.method == "POST":
+        name = request.POST["name"]
+        img = request.POST["image"]
+        tag = request.POST["tag"]
+        price = request.POST["price"]
+        desc = request.POST["desc"]
+
+        if Product.objects.filter(name=name).exists():
+            messages.info("Already exists")
+            return redirect("BuyIt:profile")
+        else:
+            product = Product.objects.create(name = name,img = img,  tag = tag, desc = desc ,  price = price)
+            product.save()
+            messages.info("Product added")
+            return redirect("BuyIt:profile")
+    else:
+       return render(request, "BuyIt/profile.html",{})
     return render(request, "BuyIt/profile.html", user)
+
+def contact(request):
+    return render(request, "BuyIt/contact.html")
+
+
+class ProductModelViewSet(generics.ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductModelSerializer

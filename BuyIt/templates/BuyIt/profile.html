@@ -1,36 +1,81 @@
-{%extends 'BuyIt/layout.html'%}
+{%extends 'BuyIt/layout.html'%} {%load static%} {%block body %}
 
-{%load static%}
-{%block body %}
 
-<div style="justify-items: center; margin-bottom: 200px;">
-    <h1>Hey, <span style="color: aqua;">{{user.username}}</span></h1>
-    <hr class="hr hr-blurry" />
-    <h3 style="font-weight: 300;">.Thank you for being such an awsome support for us.</h3>
-    <h3 style="margin-top: 30px;">Here are your details:</h3>
-    <hr class="hr hr-blurry" />
-    <table style="border: none;">
-        <tr>
-            <td>User-name :</td>
-            <td>{{user.username}}</td>
-        </tr>
-        <tr>
-            <td>First-name :</td>
-            <td>{{user.first_name}}</td>
-        </tr>
-        <tr>
-            <td>Last-name :</td>
-            <td>{{user.last_name}}</td>
-        </tr>
-        <tr>
-            <td>E-mail :</td>
-            <td>{{user.email}}</td>
-        </tr>
-        <tr>
-            <td>last-login :</td>
-            <td>{{user.last_login}}</td>
-        </tr>
-    </table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<div style="justify-items: center; margin-bottom: 200px">
+  <h1>Hey, <span style="color: aqua">{{user.username}}</span></h1>
+  <hr class="hr hr-blurry" />
+  <h3 style="font-weight: 300">
+    .Thank you for being such an awsome support for us.
+  </h3>
+  <h3 style="margin-top: 30px">Here are your details:</h3>
+  <hr class="hr hr-blurry" />
+  <table style="border: none">
+    <tr>
+      <td>User-name :</td>
+      <td>{{user.username}}</td>
+    </tr>
+    <tr>
+      <td>First-name :</td>
+      <td>{{user.first_name}}</td>
+    </tr>
+    <tr>
+      <td>Last-name :</td>
+      <td>{{user.last_name}}</td>
+    </tr>
+    <tr>
+      <td>E-mail :</td>
+      <td>{{user.email}}</td>
+    </tr>
+    <tr>
+      <td>last-login :</td>
+      <td>{{user.last_login}}</td>
+    </tr>
+  </table>
+  {% if user.username == "admin"%}
+
+  <div style="display: inline; align-items: left">
+    <form id="addForm" method="post">
+      {% csrf_token %}
+      <h4>Enter the name of the product :</h4>
+      <input type="text" id="name" />
+      <h4>Please provide the image of the product: <h4>
+      <input type="file" id = "image" name="image" accept="image/*" />
+      <h4>Enter the tag of the product :</h4>
+      <input type="text" id="tag" />
+      <h4>Enter the description of the product:</h4>
+      <input type="text-area" id="desc" />
+      <h4>Enter the amount of the product:</h4>
+      <input type="number" id="price" />
+      <p>
+      <button type="submit" value="submit" class="btn btn-primary" style="margin-top:5%;">Submit</button>
+    </form>
+  </div>
+
+
+  <div>
+    <ul id = 'data_container'></ul>
+    <p>{{list.name}}</p>
+
+  </div>
+
+  <script>
+    $.ajax({
+      url : 'http://127.0.0.1:8000/BuyIt/api/products/',
+      method : 'GET',
+      dataType : 'json',
+      success: function(data){
+        var list = $('#data_container')
+        data.forEach(function(product){
+           list.append(`<li>Name: ${product.name} Price: ${product.price} Tag: ${product.tag} description: ${product.desc} </li>`);
+        });
+      },
+      error: function(error){
+        console.log(error);
+      }
+    });
+  </script>
+  {% endif %}
 </div>
 
 {%endblock%}
