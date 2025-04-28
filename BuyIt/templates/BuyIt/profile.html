@@ -54,8 +54,12 @@
 
 
   <div>
-    <ul id = 'data_container'></ul>
-    <p>{{list.name}}</p>
+    <ul id = 'data_container'>
+      {% for product in data %}
+      <li>{{ product.name }}</li>
+      {% endfor %}
+    </ul>
+    
 
   </div>
 
